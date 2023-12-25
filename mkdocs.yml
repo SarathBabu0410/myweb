@@ -8,6 +8,9 @@ theme:
   custom_dir: overrides
   features:
     - navigation.footer
+    - content.code.copy
 
 extra:
   generator: false
+
+
