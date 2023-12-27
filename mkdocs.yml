@@ -17,4 +17,7 @@ theme:
 extra:
   generator: false
 
-
+nav:
+  - Getting Started: index.md
+  - Familiarization to Raspberry Pi: rasp.md
+  - Node's Communication: communication.md
