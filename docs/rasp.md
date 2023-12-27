@@ -7,6 +7,12 @@ Raspberry Pi is a credit card-sized, single-board computer developed by the Rasp
 
 Raspberry Pi OS, formerly known as Raspbian, is the official operating system designed for the Raspberry Pi single-board computers. It is a Debian-based Linux distribution tailored specifically for the Raspberry Pi's ARM architecture. The OS provides a user-friendly environment and comes with essential software tools, including a web browser, office suite, and programming environments. Its lightweight nature makes it well-suited for the limited resources of the Raspberry Pi hardware. Raspberry Pi OS supports a variety of applications and is widely used for educational purposes, DIY projects, and as a platform for learning programming and computing skills. Its modular design allows users to customize and expand their systems according to their specific needs, making it a versatile choice for a range of projects and applications.
 
+### Download Raspberry Pi OS 
+
+[Download OS](https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip) 
+
+### To install OS
+
 * Raspberry Pi Imager is the quick and easy way to install OS in memorycard.
 
 * Install Imager into system (https://www.raspberrypi.com/software/)
@@ -19,10 +25,12 @@ Open Terminal and run
         sudo apt install rpi-imager
 ```
 ### To install Imager on **Windows**
-[Imager for Windows](https://downloads.raspberrypi.org/imager/imager_latest.exe)
+[Download Imager for Windows](https://downloads.raspberrypi.org/imager/imager_latest.exe)
+
+
 
 ### Connecting Rasberry Pi
-
+---------------------------------------------
 ### Pin diagram of Rasberry Pi
 
 The Raspberry Pi features a set of GPIO (General Purpose Input/Output) pins, which serve as a key component for interfacing with external devices and expansion. These pins are designed to offer versatility and are programmable to function either as input or output. The Raspberry Pi Model B typically includes 40 GPIO pins, providing connectivity for various purposes such as connecting sensors, LEDs, or other peripherals. Additionally, these pins support protocols like I2C, SPI, and UART, enhancing the device's adaptability for a wide range of projects and applications.
