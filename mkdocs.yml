@@ -21,3 +21,4 @@ nav:
   - Getting Started: index.md
   - Familiarization to Raspberry Pi: rasp.md
   - Node's Communication: communication.md
+  - Sensor Connection: sensor.md
