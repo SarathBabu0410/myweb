@@ -11,6 +11,8 @@ A GPS (Global Positioning System) sensor is a device designed to determine and t
 
 ![Local Image](images/GPS.gif "GIF Source: Wikipedia")
 
+GIF Source: Wikipedia
+
 The GPS receiver uses a constellation of satellites and ground stations to calculate accurate location wherever it is located. These GPS satellites transmit information signals over radio frequency (1.1 to 1.5 GHz) to the receiver. With the help of this received information, a ground station or GPS module can compute its position and time.
 
 ## How GPS Receiver Calculates its Position and Time
