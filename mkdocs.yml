@@ -19,6 +19,8 @@ extra:
 
 nav:
   - Getting Started: index.md
+  - Socket Programming: socketprogramming.md
   - Familiarization to Raspberry Pi: rasp.md
   - Node's Communication: communication.md
   - Sensor Connection: sensor.md
+  - VANET Routing: vanetrouting.md
