@@ -101,7 +101,7 @@ Python, a thread is a lightweight, independent sequence of instructions that can
 
 ### Reading exercise
 
-[threading — Thread-based parallelismThread](https://docs.python.org/3/library/threading.html)
+[threading — Thread-based parallelismThread](https://docs.python.org/3/library/threading.html){:target="_blank"}
 
 ## Example
 ``` bash

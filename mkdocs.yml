@@ -25,3 +25,6 @@ nav:
   - Node's Communication: communication.md
   - CarTrac TestBed: cartrac.md
   - VANET Routing: vanetrouting.md
+
+markdown_extensions:
+  - attr_list
