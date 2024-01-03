@@ -1,0 +1,722 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../socketprogramming/">
+      
+      
+        <link rel="next" href="../sensor/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Familiarization to Raspberry Pi - VANET Workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tenor+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Tenor Sans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#familiarization-to-raspberry-pi" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="VANET Workshop" class="md-header__button md-logo" aria-label="VANET Workshop" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VANET Workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Familiarization to Raspberry Pi
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="VANET Workshop" class="md-nav__button md-logo" aria-label="VANET Workshop" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    VANET Workshop
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../socketprogramming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Socket Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Familiarization to Raspberry Pi
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Familiarization to Raspberry Pi
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-and-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software and Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software and Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Raspberry Pi OS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install OS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-imager-on-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install Imager on Ubuntu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-imager-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install Imager on Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-rasberry-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting Rasberry Pi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-diagram-of-rasberry-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin diagram of Rasberry Pi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pin diagram of Rasberry Pi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor Connection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../communication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node's Communication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cartrac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CarTrac TestBed
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vanetrouting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VANET Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#software-and-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software and Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software and Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Raspberry Pi OS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install OS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-imager-on-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install Imager on Ubuntu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-install-imager-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      To install Imager on Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-rasberry-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting Rasberry Pi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin-diagram-of-rasberry-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin diagram of Rasberry Pi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pin diagram of Rasberry Pi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="familiarization-to-raspberry-pi">Familiarization to raspberry pi</h1>
+<p>Raspberry Pi is a credit card-sized, single-board computer developed by the Raspberry Pi Foundation. Launched with the primary goal of promoting computer science education and fostering DIY projects, the Raspberry Pi has gained widespread popularity for its versatility and affordability. Powered by a Broadcom system-on-a-chip (SoC), it provides a fully functional computer with USB ports, HDMI output, GPIO (General Purpose Input/Output) pins, and networking capabilities. Despite its compact size and modest cost, the Raspberry Pi can run a variety of operating systems, making it an ideal platform for educational purposes, home automation, media centers, and numerous other applications. Its accessibility has fueled a vibrant community of enthusiasts, developers, and educators who continually explore innovative uses for this small yet powerful computing device.</p>
+<p><img alt="Sorry could not find image" src="../images/rpi.png" title="Raspberry Pi" /></p>
+<h2 id="software-and-installation">Software and Installation</h2>
+<p>Raspberry Pi OS, formerly known as Raspbian, is the official operating system designed for the Raspberry Pi single-board computers. It is a Debian-based Linux distribution tailored specifically for the Raspberry Pi's ARM architecture. The OS provides a user-friendly environment and comes with essential software tools, including a web browser, office suite, and programming environments. Its lightweight nature makes it well-suited for the limited resources of the Raspberry Pi hardware. Raspberry Pi OS supports a variety of applications and is widely used for educational purposes, DIY projects, and as a platform for learning programming and computing skills. Its modular design allows users to customize and expand their systems according to their specific needs, making it a versatile choice for a range of projects and applications.</p>
+<h3 id="download-raspberry-pi-os">Download Raspberry Pi OS</h3>
+<p><a href="https://downloads.raspberrypi.org/raspbian/images/raspbian-2020-02-14/2020-02-13-raspbian-buster.zip">Download OS</a> </p>
+<h3 id="to-install-os">To install OS</h3>
+<ul>
+<li>
+<p>Raspberry Pi Imager is the quick and easy way to install OS in memorycard.</p>
+</li>
+<li>
+<p>Install Imager into system (https://www.raspberrypi.com/software/)</p>
+</li>
+</ul>
+<h3 id="to-install-imager-on-ubuntu">To install Imager on <strong>Ubuntu</strong></h3>
+<p>Open Terminal and run</p>
+<pre><code class="language-bash">        sudo apt install rpi-imager
+</code></pre>
+<h3 id="to-install-imager-on-windows">To install Imager on <strong>Windows</strong></h3>
+<p><a href="https://downloads.raspberrypi.org/imager/imager_latest.exe">Download Imager for Windows</a></p>
+<h3 id="connecting-rasberry-pi">Connecting Rasberry Pi</h3>
+<hr />
+<h3 id="pin-diagram-of-rasberry-pi">Pin diagram of Rasberry Pi</h3>
+<p>The Raspberry Pi features a set of GPIO (General Purpose Input/Output) pins, which serve as a key component for interfacing with external devices and expansion. These pins are designed to offer versatility and are programmable to function either as input or output. The Raspberry Pi Model B typically includes 40 GPIO pins, providing connectivity for various purposes such as connecting sensors, LEDs, or other peripherals. Additionally, these pins support protocols like I2C, SPI, and UART, enhancing the device's adaptability for a wide range of projects and applications.</p>
+<p>Type pinout in command line to output the available pins.</p>
+<pre><code class="language-bash">        pinout
+</code></pre>
+<p><img alt="Sorry could not find image" src="../images/pins.png" title="Raspberry Pi" /></p>
+<p>you need to enable or configure GPIO (General Purpose Input/Output) pins on the Raspberry Pi when connecting sensors. GPIO pins on the Raspberry Pi often default to a general-purpose mode, and you may need to set them up for specific functionalities relevant to your sensor.</p>
+<p>Common scenarios:</p>
+<ol>
+<li>
+<p><strong>Digital Sensors:</strong> For digital sensors that use GPIO pins for input or output, you typically need to configure the pins to act as inputs or outputs. This might involve using software libraries or configuring the pins in your code.</p>
+</li>
+<li>
+<p><strong>Analog Sensors:</strong> If you are connecting analog sensors, you may need to use specific pins that support analog-to-digital conversion. In this case, you would need to configure the pins accordingly.</p>
+</li>
+<li>
+<p><strong>Communication Protocols (I2C, SPI, etc.):</strong> Many sensors communicate using protocols like I2C or SPI. In such cases, you need to enable the respective communication interface and connect the sensor to the appropriate pins.</p>
+</li>
+</ol>
+<h4 id="enable-port">Enable port</h4>
+<pre><code class="language-bash">        sudo raspi-config
+</code></pre>
+<p>Follow operations:</p>
+<pre><code class="language-bash">    Interface option -&gt; S6 Serial Port
+    Serial login shell -&gt; disable
+    Serial interface -&gt; enable
+</code></pre>
+<p>Before connecting sensors, it's crucial to refer to the datasheets of both the sensor and the  Raspberry Pi to ensure proper pin configuration. Additionally, software libraries or drivers may need to be installed or configured to communicate with the sensor properly.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../socketprogramming/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Socket Programming">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Socket Programming
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../sensor/" class="md-footer__link md-footer__link--next" aria-label="Next: Sensor Connection">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Sensor Connection
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

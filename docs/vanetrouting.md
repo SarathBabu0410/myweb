@@ -7,4 +7,4 @@ Vehicular Ad Hoc Networks (VANETs) utilize a routing technique known as flooding
 ## Steps
 * Source node send message
 * Every node contains a receiver module and transmitter module
-* Except destination node, every receiver node retransmit message 
+* Except destination node, every receiver node retransmit message
