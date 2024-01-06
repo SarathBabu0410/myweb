@@ -32,3 +32,56 @@ To determine distance, both the satellite and GPS receiver generate the same pse
 The satellite transmits the pseudocode; which is received by the GPS receiver.
 These two signals are compared and the difference between the signals is the travel time.
 Now, if the receiver knows the distance from 3 or more satellites and their location (which is sent by the satellites), then it can calculate its location by using the Trilateration method.
+
+## GPS Raspberrypi Connection
+
+Connecting a GPS module to a Raspberry Pi involves interfacing the GPS module with the Raspberry Pi's GPIO (General Purpose Input/Output) pins.
+
+Check the pin diagram of the RPi and datas heet of GPS receiver.
+
+### Connect Power and Ground
+
++ Connect the power pin (3.3V/5V) on the GPS module to the power pin (3.3V/5V) GPIO pin on the Raspberry Pi.
++ Connect the ground (GND) pin on the GPS module to any GND GPIO pin on the Raspberry Pi.
+
+### Connect Serial Communication Pins
+
++ Connect the TX (transmit) pin on the GPS module to the RX (receive) GPIO pin on the Raspberry Pi.
++ Connect the RX (receive) pin on the GPS module to the TX (transmit) GPIO pin on the Raspberry Pi.
+
+### Write the python code to read the GPS sensor values and decode it
+
+
+
+Sample code snippet
+
+``` bash
+
+def gpsInterface():
+    ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
+    previous=[0,0]
+    current=[0,0]
+    init=0
+    roe=6378100
+    while True:
+        x=ser.readline()
+        try:
+            x=str(x.decode()).split(",")
+        except:
+            continue
+        if(x[0]=="$GPGGA"):
+            if(len(x[2])>2):
+                print("TIME-",x[1]," LAT-",x[2]," LON-",x[4])
+                if(init==0):
+                    current=[float(x[2]),float(x[4])]
+                    init=1
+                    node.position=(float(x[2]),float(x[4]))
+                else:
+                    previous=current
+                    current=[float(x[2]),float(x[4])]
+            
+                    node.velocity[0]=calcDistance(current[0],current[1],previous[0],previous[1])
+                    node.position=(float(x[2]),float(x[4]))
+                    #print(round(speed*3600/1000,2)," km/h\n")
+
+```

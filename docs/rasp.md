@@ -27,10 +27,34 @@ Open Terminal and run
 ### To install Imager on **Windows**
 [Download Imager for Windows](https://downloads.raspberrypi.org/imager/imager_latest.exe)
 
+While opening the imager application you can see a window like this
+![Sorry could not find image](images/Main Screen.png "Imager")
 
+Here you can flash downloaded OS version by selecting 'Use custom' option in Operation System.
+
+![Sorry could not find image](images/Choosing Operating System.png "select os")
+
+Choose the previously downloaded OS the storage (Memory Card) and customize the OS.
+
+If the Settings option present in the Imager window select the Settings option and configure.  
+
+If the Settings option not present (new version of imager) in the Imager window select next and configure.
+
+![Sorry could not find image](images/osc.png "Imager")
+
++ Enable ssh and fill the wifi username and password.
+
++ Configure host name
 
 ### Connecting Rasberry Pi
----------------------------------------------
+
++ Power on the divice and conncet to the device from laptop using ssh.
+
+ 
+``` bash
+        ssh pi@raspberrypi.local
+```
+
 ### Pin diagram of Rasberry Pi
 
 The Raspberry Pi features a set of GPIO (General Purpose Input/Output) pins, which serve as a key component for interfacing with external devices and expansion. These pins are designed to offer versatility and are programmable to function either as input or output. The Raspberry Pi Model B typically includes 40 GPIO pins, providing connectivity for various purposes such as connecting sensors, LEDs, or other peripherals. Additionally, these pins support protocols like I2C, SPI, and UART, enhancing the device's adaptability for a wide range of projects and applications.
