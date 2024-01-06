@@ -28,7 +28,7 @@ Ad hoc networks are decentralized and dynamic communication systems that form sp
 
 ### Adhoc setup
 
-* Show the configuration using iwconfig and ifconfig
+* Check your device the configuration and communication mode using ifconfig and iwconfig
 * Setup raspberry pi wireless interface to ad-hoc mode
 
 Modify interface file
@@ -51,6 +51,16 @@ Modify interface file
     wireless-essid VANET
     wireless-mode ad-hoc
 ```
+[Download the configuration file from here.](https://drive.usercontent.google.com/u/1/uc?id=1CShhOWfbWg19sD1HuZv_AYr8HQThXh_W&export=download)
+
++ <span style="color:red">
+ Don't forget change the IP address of the node.
+</span>
+
++ Reboot the device after configuration.
+
++ Check the change in communication mode using iwconfig
+
 
 ### Communication between adhoc nodes
  * Write socket program to communicate between the nodes
