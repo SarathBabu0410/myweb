@@ -548,7 +548,7 @@ Example:</p>
 <p>Ad hoc networks are decentralized and dynamic communication systems that form spontaneously without the need for a pre-existing infrastructure. In ad hoc networks, devices communicate directly with each other, allowing for quick and flexible connectivity in scenarios where a centralized infrastructure is impractical or unavailable. Ad hoc networks are well-suited for situations such as emergency response, military operations, or temporary gatherings, where the ability to establish a network on-the-fly is crucial.</p>
 <h3 id="adhoc-setup">Adhoc setup</h3>
 <ul>
-<li>Show the configuration using iwconfig and ifconfig</li>
+<li>Check your device the configuration and communication mode using ifconfig and iwconfig</li>
 <li>Setup raspberry pi wireless interface to ad-hoc mode</li>
 </ul>
 <p>Modify interface file</p>
@@ -568,6 +568,20 @@ Example:</p>
     wireless-essid VANET
     wireless-mode ad-hoc
 </code></pre>
+<p><a href="https://drive.usercontent.google.com/u/1/uc?id=1CShhOWfbWg19sD1HuZv_AYr8HQThXh_W&amp;export=download">Download the configuration file from here.</a></p>
+<ul>
+<li>
+<p><span style="color:red">
+ Don't forget change the IP address of the node.
+</span></p>
+</li>
+<li>
+<p>Reboot the device after configuration.</p>
+</li>
+<li>
+<p>Check the change in communication mode using iwconfig</p>
+</li>
+</ul>
 <h3 id="communication-between-adhoc-nodes">Communication between adhoc nodes</h3>
 <ul>
 <li>Write socket program to communicate between the nodes</li>
