@@ -601,8 +601,28 @@
 </code></pre>
 <h3 id="to-install-imager-on-windows">To install Imager on <strong>Windows</strong></h3>
 <p><a href="https://downloads.raspberrypi.org/imager/imager_latest.exe">Download Imager for Windows</a></p>
+<p>While opening the imager application you can see a window like this
+<img alt="Sorry could not find image" src="../images/Main%20Screen.png" title="Imager" /></p>
+<p>Here you can flash downloaded OS version by selecting 'Use custom' option in Operation System.</p>
+<p><img alt="Sorry could not find image" src="../images/Choosing%20Operating%20System.png" title="select os" /></p>
+<p>Choose the previously downloaded OS the storage (Memory Card) and customize the OS.</p>
+<p>If the Settings option present in the Imager window select the Settings option and configure.  </p>
+<p>If the Settings option not present (new version of imager) in the Imager window select next and configure.</p>
+<p><img alt="Sorry could not find image" src="../images/osc.png" title="Imager" /></p>
+<ul>
+<li>
+<p>Enable ssh and fill the wifi username and password.</p>
+</li>
+<li>
+<p>Configure host name</p>
+</li>
+</ul>
 <h3 id="connecting-rasberry-pi">Connecting Rasberry Pi</h3>
-<hr />
+<ul>
+<li>Power on the divice and conncet to the device from laptop using ssh.</li>
+</ul>
+<pre><code class="language-bash">        ssh pi@raspberrypi.local
+</code></pre>
 <h3 id="pin-diagram-of-rasberry-pi">Pin diagram of Rasberry Pi</h3>
 <p>The Raspberry Pi features a set of GPIO (General Purpose Input/Output) pins, which serve as a key component for interfacing with external devices and expansion. These pins are designed to offer versatility and are programmable to function either as input or output. The Raspberry Pi Model B typically includes 40 GPIO pins, providing connectivity for various purposes such as connecting sensors, LEDs, or other peripherals. Additionally, these pins support protocols like I2C, SPI, and UART, enhancing the device's adaptability for a wide range of projects and applications.</p>
 <p>Type pinout in command line to output the available pins.</p>
