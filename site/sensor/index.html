@@ -329,6 +329,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gps-raspberrypi-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPS Raspberrypi Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPS Raspberrypi Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-power-and-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Power and Ground
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-serial-communication-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Serial Communication Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-python-code-to-read-the-gps-sensor-values-and-decode-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write the python code to read the GPS sensor values and decode it
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -450,6 +492,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#gps-raspberrypi-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPS Raspberrypi Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPS Raspberrypi Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connect-power-and-ground" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Power and Ground
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-serial-communication-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Serial Communication Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-the-python-code-to-read-the-gps-sensor-values-and-decode-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write the python code to read the GPS sensor values and decode it
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -486,6 +570,50 @@ Where,</p>
 <p>The satellite transmits the pseudocode; which is received by the GPS receiver.
 These two signals are compared and the difference between the signals is the travel time.
 Now, if the receiver knows the distance from 3 or more satellites and their location (which is sent by the satellites), then it can calculate its location by using the Trilateration method.</p>
+<h2 id="gps-raspberrypi-connection">GPS Raspberrypi Connection</h2>
+<p>Connecting a GPS module to a Raspberry Pi involves interfacing the GPS module with the Raspberry Pi's GPIO (General Purpose Input/Output) pins.</p>
+<p>Check the pin diagram of the RPi and datas heet of GPS receiver.</p>
+<h3 id="connect-power-and-ground">Connect Power and Ground</h3>
+<ul>
+<li>Connect the power pin (3.3V/5V) on the GPS module to the power pin (3.3V/5V) GPIO pin on the Raspberry Pi.</li>
+<li>Connect the ground (GND) pin on the GPS module to any GND GPIO pin on the Raspberry Pi.</li>
+</ul>
+<h3 id="connect-serial-communication-pins">Connect Serial Communication Pins</h3>
+<ul>
+<li>Connect the TX (transmit) pin on the GPS module to the RX (receive) GPIO pin on the Raspberry Pi.</li>
+<li>Connect the RX (receive) pin on the GPS module to the TX (transmit) GPIO pin on the Raspberry Pi.</li>
+</ul>
+<h3 id="write-the-python-code-to-read-the-gps-sensor-values-and-decode-it">Write the python code to read the GPS sensor values and decode it</h3>
+<p>Sample code snippet</p>
+<pre><code class="language-bash">
+def gpsInterface():
+    ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
+    previous=[0,0]
+    current=[0,0]
+    init=0
+    roe=6378100
+    while True:
+        x=ser.readline()
+        try:
+            x=str(x.decode()).split(&quot;,&quot;)
+        except:
+            continue
+        if(x[0]==&quot;$GPGGA&quot;):
+            if(len(x[2])&gt;2):
+                print(&quot;TIME-&quot;,x[1],&quot; LAT-&quot;,x[2],&quot; LON-&quot;,x[4])
+                if(init==0):
+                    current=[float(x[2]),float(x[4])]
+                    init=1
+                    node.position=(float(x[2]),float(x[4]))
+                else:
+                    previous=current
+                    current=[float(x[2]),float(x[4])]
+
+                    node.velocity[0]=calcDistance(current[0],current[1],previous[0],previous[1])
+                    node.position=(float(x[2]),float(x[4]))
+                    #print(round(speed*3600/1000,2),&quot; km/h\n&quot;)
+
+</code></pre>
 
 
 

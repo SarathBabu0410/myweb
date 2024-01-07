@@ -54,13 +54,12 @@ Modify interface file
 [Download the configuration file from here.](https://drive.usercontent.google.com/u/1/uc?id=1CShhOWfbWg19sD1HuZv_AYr8HQThXh_W&export=download)
 
 + <span style="color:red">
- Don't forget change the IP address of the node.
+ Don't forget to change the IP address of the node.
 </span>
 
 + Reboot the device after configuration.
 
 + Check the change in communication mode using iwconfig
-
 
 ### Communication between adhoc nodes
  * Write socket program to communicate between the nodes
