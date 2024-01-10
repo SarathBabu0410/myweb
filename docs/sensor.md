@@ -56,32 +56,27 @@ Check the pin diagram of the RPi and datas heet of GPS receiver.
 Sample code snippet
 
 ``` bash
+import serial
 
-def gpsInterface():
-    ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
-    previous=[0,0]
-    current=[0,0]
-    init=0
-    roe=6378100
-    while True:
-        x=ser.readline()
-        try:
-            x=str(x.decode()).split(",")
-        except:
-            continue
-        if(x[0]=="$GPGGA"):
-            if(len(x[2])>2):
-                print("TIME-",x[1]," LAT-",x[2]," LON-",x[4])
-                if(init==0):
-                    current=[float(x[2]),float(x[4])]
-                    init=1
-                    node.position=(float(x[2]),float(x[4]))
-                else:
-                    previous=current
-                    current=[float(x[2]),float(x[4])]
-            
-                    node.velocity[0]=calcDistance(current[0],current[1],previous[0],previous[1])
-                    node.position=(float(x[2]),float(x[4]))
-                    #print(round(speed*3600/1000,2)," km/h\n")
-
+ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
+previous=[0,0]
+current=[0,0]
+init=0
+roe=6378100
+while True:
+    x=ser.readline()
+    try:
+        x=str(x.decode()).split(",")
+    except:
+        continue
+    if(x[0]=="$GPGGA"):
+        if(len(x[2])>2):
+            print(" LAT-",x[2]," LON-",x[4])
+            if(init==0):
+                print("x = ",float(x[2]),"y = ",float(x[4]))
+                init=1
+            else:
+                previous=current
+                current=[float(x[2]),float(x[4])]
+                print("x = ",float(x[2]),"y = ",float(x[4]))
 ```
