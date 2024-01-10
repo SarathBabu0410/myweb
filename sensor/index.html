@@ -585,34 +585,29 @@ Now, if the receiver knows the distance from 3 or more satellites and their loca
 </ul>
 <h3 id="write-the-python-code-to-read-the-gps-sensor-values-and-decode-it">Write the python code to read the GPS sensor values and decode it</h3>
 <p>Sample code snippet</p>
-<pre><code class="language-bash">
-def gpsInterface():
-    ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
-    previous=[0,0]
-    current=[0,0]
-    init=0
-    roe=6378100
-    while True:
-        x=ser.readline()
-        try:
-            x=str(x.decode()).split(&quot;,&quot;)
-        except:
-            continue
-        if(x[0]==&quot;$GPGGA&quot;):
-            if(len(x[2])&gt;2):
-                print(&quot;TIME-&quot;,x[1],&quot; LAT-&quot;,x[2],&quot; LON-&quot;,x[4])
-                if(init==0):
-                    current=[float(x[2]),float(x[4])]
-                    init=1
-                    node.position=(float(x[2]),float(x[4]))
-                else:
-                    previous=current
-                    current=[float(x[2]),float(x[4])]
+<pre><code class="language-bash">import serial
 
-                    node.velocity[0]=calcDistance(current[0],current[1],previous[0],previous[1])
-                    node.position=(float(x[2]),float(x[4]))
-                    #print(round(speed*3600/1000,2),&quot; km/h\n&quot;)
-
+ser=serial.Serial(port='/dev/ttyS0',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=1)
+previous=[0,0]
+current=[0,0]
+init=0
+roe=6378100
+while True:
+    x=ser.readline()
+    try:
+        x=str(x.decode()).split(&quot;,&quot;)
+    except:
+        continue
+    if(x[0]==&quot;$GPGGA&quot;):
+        if(len(x[2])&gt;2):
+            print(&quot; LAT-&quot;,x[2],&quot; LON-&quot;,x[4])
+            if(init==0):
+                print(&quot;x = &quot;,float(x[2]),&quot;y = &quot;,float(x[4]))
+                init=1
+            else:
+                previous=current
+                current=[float(x[2]),float(x[4])]
+                print(&quot;x = &quot;,float(x[2]),&quot;y = &quot;,float(x[4]))
 </code></pre>
 
 
